@@ -1,0 +1,95 @@
+{% extends 'admin_panel.html' %}
+
+{% block title %}
+Admin Home
+{% endblock title %}
+
+{% block css %}
+<style>
+  body {
+    background-image: url("/static/images/G.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .admin-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+
+  .admin-container h2 {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    margin-left: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="admin-container">
+  <h2>Add New Package Category</h2>
+  <form method="POST" action="/admin/package">
+    <label for="name">Category Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="description">Category Description:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+    <br>
+    <button type="submit">Add Package Category</button>
+  </form>
+
+  <h2>Manage Package Categories</h2>
+  <ul>
+    {% for package in packages %}
+    <li>
+      {{ package.name }} - {{ package.description }}
+      <a href="/admin/edit/package/{{ package.id }}">Edit</a>
+
+      <form method="POST" action="/admin/delete/package/{{ package.id }}" style="display: inline-block;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<hr>
+
+{% endblock body %}

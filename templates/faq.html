@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+BOOKING
+{% endblock title %}
+
+{% block body %}
+
+<title>FAQ Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("static/images/O.webp"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .faq-container {
+    /* Your existing styles */
+  }
+  .faq-question {
+    font-size: 30px; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 10px; /* Add some spacing */
+  }
+  .faq-answer {
+    font-size: 25px; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 10px; /* Add some spacing */
+    /* Your existing styles */
+  }
+</style>
+</head>
+<body>
+<div class="faq-container">
+  <div class="faq-item">
+    <div class="faq-question"><strong>Why would you choose us?</strong></div>
+    <div class="faq-answer">
+      <p> It all gets close to it all: we'll manage your event as though it were our own.
+        We'll be there to help you visualize your goals and find out what your choices are. 
+        We will provide you with end to end service and will be there to ensure a successful event, 
+        unlike larger event planning services.
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question"><strong>What Types of Events Does Bridal Heritage Plan?</strong></div>
+    <div class="faq-answer">
+      <p>We are happy to help you organize any type of event. 
+        From your dream wedding with hundreds of guests to corporate/non-profit meetings and all in between, we will help. 
+        We would turn your vision a reality no matter what your desires or budget.
+    </p>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question"><strong>How do you keep budgets on track?</strong></div>
+    <div class="faq-answer">
+      <p> We are meticulous about keeping track of everything we need to spend money on.
+        This is done by constant monitoring and updating spreadsheets, knowing where to prioritise
+        pending and keeping aside a budget to cater for emergency contingencies.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

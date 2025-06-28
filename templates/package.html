@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Package
+{% endblock title %}
+
+{% block body %}
+
+<style>
+  .packages-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("static/images/A.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .packages {
+    display: flex;
+    flex-direction: row;
+  }
+  .package-card {
+    width: 18rem;
+    border: none;
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .package-card h5 {
+    margin-bottom: 5px;
+  }
+  .package-card p {
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="packages-container">
+  <div class="packages">
+    {% for package in packages %}
+    <div class="package-card">
+      <div class="card-body">
+        <h5 class="card-title">{{ package.name }}</h5>
+        <p class="card-text">{{ package.description }}</p>
+        <a href="/details/{{ package.id }}" class="btn btn-primary">Click</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock body %}

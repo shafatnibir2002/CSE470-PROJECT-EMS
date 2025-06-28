@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Venue
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-4">
+  <h2>Edit Venue</h2>
+  <!-- Form to edit the venue details -->
+  <form method="post">
+    <div class="mb-3">
+      <label for="venue_name" class="form-label">Venue Name</label>
+      <input type="text" class="form-control" id="venue_name" name="venue_name" value="{{ venue.name }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="venue_price" class="form-label">Venue Price</label>
+      <input type="number" class="form-control" id="venue_price" name="venue_price" value="{{ venue.price }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="venue_description" class="form-label">Venue Description</label>
+      <textarea class="form-control" id="venue_description" name="venue_description" rows="3" required>{{ venue.description }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="parent_package" class="form-label">Parent Package</label>
+      <select class="form-select" id="parent_package" name="parent_package" required>
+        {% for package in packages %}
+        <option value="{{ package.id }}" {% if venue.package_id == package.id %}selected{% endif %}>{{ package.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+{% endblock body %}

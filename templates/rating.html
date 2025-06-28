@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Rate Us
+{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("static/images/C.jpg"); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .flash-messages {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .flash-message {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .rate-us-box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            width: calc(33.33% - 20px);
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .rate-us-container {
+            text-align: center;
+        }
+        .stars {
+            display: inline-block;
+            margin: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .stars:hover {
+            color: gold;
+        }
+        .selected {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="rate-us-box">
+        <div class="rate-us-container">
+            <h2>Rate Our Service</h2>
+            <p>Please select a rating:</p>
+            
+            <div class="stars">
+                <form action="{{ url_for('submit_rating') }}" method="POST">
+                    <input type="hidden" name="rating" value="1">
+                    <button type="submit" class="star">&#9733;</button>
+                </form>
+            </div>
+
+            <div class="stars">
+                <form action="{{ url_for('submit_rating') }}" method="POST">
+                    <input type="hidden" name="rating" value="2">
+                    <button type="submit" class="star">&#9733;</button>
+                </form>
+            </div>
+
+            <div class="stars">
+                <form action="{{ url_for('submit_rating') }}" method="POST">
+                    <input type="hidden" name="rating" value="3">
+                    <button type="submit" class="star">&#9733;</button>
+                </form>
+            </div>
+
+            <div class="stars">
+                <form action="{{ url_for('submit_rating') }}" method="POST">
+                    <input type="hidden" name="rating" value="4">
+                    <button type="submit" class="star">&#9733;</button>
+                </form>
+            </div>
+
+            <div class="stars">
+                <form action="{{ url_for('submit_rating') }}" method="POST">
+                    <input type="hidden" name="rating" value="5">
+                    <button type="submit" class="star">&#9733;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Flash message section outside the rating box -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

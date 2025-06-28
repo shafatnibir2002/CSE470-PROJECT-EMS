@@ -1,0 +1,45 @@
+{% extends 'admin_panel.html' %}
+
+{% block title %}
+Order Details
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+  <h1>Order Details</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Package</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Payment Address</th>
+        <th scope="col">Payment Amount</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers %}
+      <tr>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.date }}</td>
+        <td>{{ customer.package }}</td>
+        <td>{{ customer.number }}</td>
+        
+        
+            {% for payment in payments %}
+           <td> {{ payment.payment_address }}</td>
+           <td> BDT {{ payment.payment_amount }}
+          
+          
+           </td>
+        
+          
+      </tr>
+          {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Checkout
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+  <h1>Checkout</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>BDT {{ item.price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form method="post" action="/checkout">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Phone Number</label>
+      <input type="text" class="form-control" id="number" name="number" required>
+    </div>
+    <div class="mb-3">
+      <label for="payment_address" class="form-label">Payment Address</label>
+      <input type="text" class="form-control" id="payment_address" name="payment_address" required>
+    </div>
+    <div class="mb-3">
+      <label for="payment_amount" class="form-label">Payment Amount</label>
+      <input type="text" class="form-control" id="payment_amount" name="payment_amount" value="{{ total_price }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="package" class="form-label">Package</label>
+      <select class="form-select" id="package" name="package" required>
+        {% for item in cart %}
+        <option value="{{ item.name }}">{{ item.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+  </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search Results
+{% endblock title %}
+
+{% block body %}
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("{{ url_for('static', filename='images/w24.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .packages-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .package-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .package-details {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .package-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .package-description {
+    font-size: 14px;
+  }
+  .venue {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .venue-details {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .venue-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .venue-price {
+    font-size: 14px;
+    color: #ff9900;
+  }
+  .venue-description {
+    font-size: 12px;
+  }
+  .btn-container {
+    display: flex;
+    margin-top: 10px;
+  }
+  .btn-container button {
+    margin-right: 10px;
+  }
+</style>
+
+<div class="packages-container">
+  {% for package in search_results %}
+  <div class="package-card">
+    <div class="package-details">
+      <div class="package-title">{{ package.name }}</div>
+      <div class="package-description">{{ package.description }}</div>
+      <h4>Venue Packages:</h4>
+      {% for venue in package.venues %}
+      <div class="venue">
+        <div class="venue-details">
+          <div class="venue-title">{{ venue.name }}</div>
+          <div class="venue-price">BDT {{ venue.price }}</div>
+          <div class="venue-description">{{ venue.description }}</div>
+          <div class="btn-container">
+            <form action="/add_to_cart" method="post">
+              <input type="hidden" name="package_name" value="{{ venue.name }}">
+              <input type="hidden" name="package_price" value="{{ venue.price }}">
+              <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+            <form action="/add_to_wishlist" method="post">
+              <input type="hidden" name="package_name" value="{{ venue.name }}">
+              <input type="hidden" name="package_price" value="{{ venue.price }}">
+              <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock body %}

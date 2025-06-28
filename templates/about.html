@@ -1,0 +1,113 @@
+<!-- about_us.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+ABOUT US
+{% endblock title %}
+
+{% block body %}
+<!-- Slideshow -->
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="static\images\image1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>BOOK YOUR SLOT NOW</h5>
+                <p>Bangladesh no 1 Event Planner</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="static\images\image2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>HURRY UP!</h5>
+                <p>Don't miss the chance</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="static\images\image3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Main Content -->
+<br>
+<br>
+<br>
+<section>
+    <h2>Who We Are</h2>
+    <p>
+        Welcome to our event management system! We are a team of dedicated professionals
+        passionate about organizing unforgettable events and ensuring the best experience for
+        our clients and attendees.
+    </p>
+</section>
+
+<section>
+    <h2>Our Mission</h2>
+    <p>
+        Our mission is to deliver seamless and exceptional event management services.
+        We strive to create memorable moments for all participants while handling every
+        aspect of event planning with precision and care.
+    </p>
+</section>
+
+<section>
+    <h2>Why Choose Us</h2>
+    <p>
+        With years of experience in the industry, we have built a reputation for excellence.
+        Our attention to detail and commitment to customer satisfaction set us apart from
+        the rest. When you choose our event management services, you can be confident that
+        your event will be a resounding success.
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>Contact us at: contact@eventmanagementsystem.com</p>
+</footer>
+
+<!-- JavaScript to handle the slideshow -->
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("carousel-item");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides();
+    }
+</script>
+{% endblock body %}

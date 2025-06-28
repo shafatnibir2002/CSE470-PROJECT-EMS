@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+HOME
+{% endblock title %}
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for i in range(20) %}
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ i }}" {% if i == 0 %}class="active" {% endif %} aria-label="Slide {{ i+1 }}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {% for i in range(20) %}
+    <div class="carousel-item {% if i == 0 %}active{% endif %}">
+      <img src="static\images\w{{ i+1 }}.jpg" class="d-block w-75 mx-auto" alt="Slide {{ i+1 }}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5> What are you thinking ? </h5>
+        <p>Hurry Up! Book Your Event Now</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- JavaScript to handle the slideshow -->
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+      const slides = document.getElementsByClassName("carousel-item");
+      for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+          slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2000); // Change slide every 2 seconds
+  }
+
+  function changeSlide(n) {
+      slideIndex += n;
+      showSlides();
+  }
+</script>
+
+{% endblock body %}

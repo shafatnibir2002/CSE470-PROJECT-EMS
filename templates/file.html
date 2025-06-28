@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Privacy Policy
+{% endblock title %}
+
+{% block styles %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .background-image {
+    background-image: url('static/images/w24.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .jumbotron {
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  .alert {
+    margin-top: 20px;
+  }
+
+  .privacy-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.6;
+  }
+
+  .privacy-item {
+    margin-bottom: 30px;
+  }
+
+  .privacy-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .privacy-description {
+    font-size: 1.1rem;
+    color: #555;
+  }
+</style>
+{% endblock styles %}
+
+{% block body %}
+<div class="background-image"></div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <div class="privacy-content">
+        <div class="privacy-item">
+          <h2 class="privacy-title">1. Information Collection</h2>
+          <p class="privacy-description">
+            We collect personal information from you when you sign up for an account, fill out forms, or interact with our platform. The information we collect may include your name, email address, phone number, and any other details necessary to provide our services.
+          </p>
+        </div>
+
+        <div class="privacy-item">
+          <h2 class="privacy-title">2. Use of Information</h2>
+          <p class="privacy-description">
+            We use the information you provide to deliver our services, personalize your experience, improve our platform, and communicate with you. We may also use your information to send periodic emails, provide customer support, and enhance our marketing efforts.
+          </p>
+        </div>
+
+        <div class="privacy-item">
+          <h2 class="privacy-title">3. Data Security</h2>
+          <p class="privacy-description">
+            We take appropriate measures to protect your personal information from unauthorized access, alteration, or disclosure. We use industry-standard security protocols and follow best practices to ensure the security of your data. However, please note that no method of transmission over the internet or electronic storage is 100% secure.
+
+          </p>
+        </div>
+
+        <div class="privacy-item">
+          <h2 class="privacy-title">4. Third-Party Disclosure</h2>
+          <p class="privacy-description">
+            We do not sell, trade, or transfer your personal information to third parties without your consent. However, we may share your information with trusted partners and service providers who assist us in delivering our services, as long as they agree to keep the information confidential.
+
+          </p>
+        </div>
+        <div class="privacy-item">
+          <h2 class="privacy-title">5. Cookies and Tracking Technologies</h2>
+          <p class="privacy-description">
+            We may use cookies and similar tracking technologies to enhance your browsing experience and collect information about how you interact with our platform. You can modify your browser settings to disable cookies, but please note that some features of our website may not function properly without them.
+
+          </p>
+        </div>
+        <div class="privacy-item">
+          <h2 class="privacy-title">6. Data Retention</h2>
+          <p class="privacy-description">
+            We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.
+
+          </p>
+        </div>
+        <div class="privacy-item">
+          <h2 class="privacy-title">7. Children's Privacy</h2>
+          <p class="privacy-description">
+            Our platform is not intended for use by individuals under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us, and we will promptly remove the information from our records.
+
+          </p>
+        </div>
+        <div class="privacy-item">
+          <h2 class="privacy-title">8. Updates to Privacy Policy</h2>
+          <p class="privacy-description">
+            We may update this Privacy Policy from time to time. We encourage you to review the Policy periodically for any changes. Your continued use of our services after any modifications to the Policy will constitute your acknowledgment of the changes and your consent to abide and be bound by the updated Policy.
+
+          </p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

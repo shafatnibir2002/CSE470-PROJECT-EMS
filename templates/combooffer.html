@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Combo offer
+{% endblock title %}
+
+{% block css %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("{{ url_for('static', filename='images/G.jpg') }}");
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .package-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: transparent; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+  }
+  .package {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(33.33% - 20px); 
+    background-color: rgba(255, 255, 255, 0.8); 
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    text-align: center; 
+  }
+  .package img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .package-details {
+    flex: 1;
+    padding: 10px 0;
+  }
+  .package-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .package-price {
+    font-size: 16px;
+    color: #ff9900;
+  }
+  .package-description {
+    font-size: 14px;
+  }
+  .add-to-cart-button,
+  .wishlist-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: 10px; 
+  }
+</style>
+{% endblock css%}
+{% block body %}
+<div class="package-container">
+  <div class="package">
+    <div class="package-details">
+      <div class="package-title">Standard Offer</div>
+      <div class="package-price">BDT 90,000</div>
+      <div class="package-description">
+        <ol>
+          <li>Includes 2-hour photo session, 25 edited photos, and online gallery.</li>
+          <li>A nice ballroom venue.</li>
+          <li>Kacchi and standard drinks from our menu.</li>
+        </ol>
+      </div>
+      <form action="/add_to_cart" method="post">
+        <input type="hidden" name="package_name" value="Standard Offer">
+        <input type="hidden" name="package_price" value="90000">
+        <button type="submit" class="add-to-cart-button">Add to Cart</button>
+      </form>
+      <form action="/add_to_wishlist" method="post">
+        <input type="hidden" name="package_name" value="Standard Offer">
+        <input type="hidden" name="package_price" value="90000">
+        <button type="submit" class="wishlist-button">Add to Wishlist</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="package">
+    <div class="package-details">
+      <div class="package-title">Premium Package</div>
+      <div class="package-price">BDT 1,00,000</div>
+      <div class="package-description">
+        <ol>
+          <li>Includes 4-hour photo session, 50 edited photos, online gallery, and a photo album.</li>
+          <li>Customized venue.</li>
+          <li>Kacchi and standard drinks from our menu.</li>
+        </ol>
+      </div>
+      <form action="/add_to_cart" method="post">
+        <input type="hidden" name="package_name" value="Premium Package">
+        <input type="hidden" name="package_price" value="100000">
+        <button type="submit" class="add-to-cart-button">Add to Cart</button>
+      </form>
+      <form action="/add_to_wishlist" method="post">
+        <input type="hidden" name="package_name" value="Premium Package">
+        <input type="hidden" name="package_price" value="100000">
+        <button type="submit" class="wishlist-button">Add to Wishlist</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="package">
+    <div class="package-details">
+      <div class="package-title">Premium Plus Package</div>
+      <div class="package-price">BDT 2,00,000</div>
+      <div class="package-description">
+        <ol>
+          <li>Includes 6-hour photo session, 100 edited photos, online gallery, and a photo album.</li>
+          <li>A nice ballroom venue.</li>
+          <li>Customized food from our menu.</li>
+        </ol>
+      </div>
+      <form action="/add_to_cart" method="post">
+        <input type="hidden" name="package_name" value="Premium Plus Package">
+        <input type="hidden" name="package_price" value="200000">
+        <button type="submit" class="add-to-cart-button">Add to Cart</button>
+      </form>
+      <form action="/add_to_wishlist" method="post">
+        <input type="hidden" name="package_name" value="Premium Plus Package">
+        <input type="hidden" name="package_price" value="200000">
+        <button type="submit" class="wishlist-button">Add to Wishlist</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body%}

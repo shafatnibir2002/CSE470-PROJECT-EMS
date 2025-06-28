@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Gallery
+{% endblock title %}
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+
+
+
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<head>
+  <title>Image Gallery</title>
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Gallery</h1>
+  <div class="gallery">
+    <img src="static/images/img7.jpg" alt="Image 1">
+    <img src="static/images/img2.jpg" alt="Image 2">
+    <img src="static/images/image1.jpg" alt="Image 3">
+    <img src="static/images/image2.jpg" alt="Image 4">
+    <img src="static/images/image3.jpg" alt="Image 5">
+    <img src="static/images/image6.jpg" alt="Image 6">
+    <img src="static/images/img5.jpg" alt="Image 7">
+    <img src="static/images/img4.jpg" alt="Image 8">
+    <img src="static/images/image4.jpg" alt="Image 9">
+    <img src="static/images/image5.jpg" alt="Image 10">
+    <!-- Add more images here -->
+  </div>
+</body>
+
+
+{% endblock body %}

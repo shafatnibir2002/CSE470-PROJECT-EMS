@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+BOOKING
+{% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+
+{% block body %}
+<head>
+<title>Select Party Category</title>
+<style>
+  body {
+    background-color: lightblue;
+  }
+  h1 {
+    color: #333; /* Set the text color */
+  }
+  select {
+    background-color: #ffcc00; /* Set the background color for the select element */
+    color: #fff; /* Set the text color for the select element */
+    border: 2px solid #ffcc00; /* Add a border to the select element */
+    padding: 8px; /* Add some padding to the select element */
+    border-radius: 5px; /* Round the corners of the select element */
+  }
+</style>
+</head>
+<body>
+<h1>Party Category Selection</h1>
+
+<label for="partyCategory">Choose a Party Category:</label>
+<select id="partyCategory">
+  <option value="birthday">Birthday</option>
+  <option value="wedding">Wedding</option>
+  <option value="graduation">Graduation</option>
+  <option value="anniversary">Anniversary</option>
+  <option value="engagement">Engagement</option>
+  <option value="other">Other</option> <!-- Add the new "Other" option -->
+</select>
+
+<br> 
+<br> 
+<br> <!-- Add a line break for better visual separation -->
+
+<label for="partyTheme">Choose a Party Theme:</label>
+<select id="partyTheme">
+  <option value="pirate">Pirate</option>
+  <option value="disco">Disco</option>
+  <option value="luau">Luau</option>
+  <option value="masquerade">Masquerade</option>
+  <option value="hollywood">Hollywood</option>
+  <option value="other">Other</option> <!-- Add the new "Other" option -->
+</select>
+<br>
+<input type="submit" value="Submit">
+</body>
+{% endblock body %}
